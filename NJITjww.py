@@ -10,13 +10,12 @@ def get_url():
     url = 'http://jwc.njit.edu.cn/'
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
-    links = soup.find_all(href=re.compile("content.jsp"),target="_blank",limit=9)
+    links = soup.find_all(href=re.compile("content.jsp"),target="_blank",limit=13)
     main_url = 'http://jwc.njit.edu.cn/'
     url_lists = []
     for link in links:
         a = link['href']
         url_lists.append(main_url+a)
-    del url_lists[0]
     return url_lists
 
 def get_content():
